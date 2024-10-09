@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jokes</title>
+    <script>
+        async function fetchJokes() {
+            const count = document.getElementById("count").value;
+            const response = await fetch(`/jokes?count=${count}`);
+            const jokes = await response.json();
+            const jokesList = document.getElementById("jokes");
+            jokesList.innerHTML = '';
+            jokes.forEach(joke => {
+                const li = document.createElement("li");
+                li.innerText = `${joke.question} - ${joke.answer}`;
+                jokesList.appendChild(li);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Jokes</h1>
+    <label for="count">Number of Jokes: </label>
+    <input type="number" id="count" min="1" max="100" value="10">
+    <button onclick="fetchJokes()">Get Jokes</button>
+    <ul id="jokes"></ul>
+</body>
+</html>

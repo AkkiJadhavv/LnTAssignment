@@ -1,0 +1,37 @@
+quarkus:
+  datasource:
+    db-kind: mysql
+    jdbc:
+      url: jdbc:mysql://localhost:3306/joke_database
+      driver: com.mysql.cj.jdbc.Driver
+      username: root
+      password: Darshuj26@
+  
+  # Configuration for Hibernate ORM
+  hibernate-orm:
+    dialect: org.hibernate.dialect.MySQLDialect
+    log:
+      sql: true
+
+  # Configuration for Reactive Datasource
+  reactive:
+    datasource:
+      db-kind: mysql
+      jdbc:
+        url: jdbc:mysql://localhost:3306/joke_database
+        driver: com.mysql.cj.jdbc.Driver
+        username: root
+        password: Darshuj26@
+      reactive:
+        enabled: true
+
+  # Joke API Configuration
+  joke-api:
+    url: https://official-joke-api.appspot.com
+  
+  # OpenAPI Configuration
+  smallrye-openapi:
+    path: /openapi
+    info:
+      title: Joke API
+      version: 1.0.0
